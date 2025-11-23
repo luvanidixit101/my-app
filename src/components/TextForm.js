@@ -27,6 +27,17 @@ export default function TextForm(props) {
         // console.log("Uppercase was cliked");
         setText(e.target.value);
     }
+    const handaleCopy = ()=>{
+      console.log("T am copy")
+      var text=document.getElementById("myBox");
+      text.select();
+      navigator.clipboard.writeText(text.value);
+    }
+
+    const handaleExtraSpaces =()=>{
+      let newText=text.split(/[ ]+/);
+      setText(newText.join(" "))
+    }
 
     const [text, setText]= useState('');
     // text="new state"; //wrong way
@@ -37,15 +48,18 @@ export default function TextForm(props) {
 <div className="mb-3">
    
   <textarea className="form-control" placeholder="Enter Your Content" value= {text} onChange={handaleOnChange} id="myBox" rows="8"></textarea><br></br>
+     <button  className="btn btn-primary mx-2" onClick={handaleClear}>Clear</button >
     <button  className="btn btn-primary mx-2" onClick={handaleUpClick}>Convert to Uppercase</button >
     <button  className="btn btn-primary mx-2" onClick={handaleLoClick}>Convert to Lowercase</button >
-        <button  className="btn btn-primary mx-2" onClick={handaleClear}>Clear</button >
+        <button  className="btn btn-primary mx-2" onClick={handaleCopy}>Copy All Text</button >
+        <button  className="btn btn-primary mx-2" onClick={handaleExtraSpaces}>Romove Extra Space</button >
+       
     
   </div>
 
   <div className="container my-3">
     <h2>Your Text Summary</h2>
-    <p><b>{text.split(" ").length }</b> Youe text areaa in Total Carecter Count Is :  
+    <p><b>{text.split(" ").length }</b> Youe text area in Total Charecter Count Is :  
  <b> {text.length} </b></p>
 
  <p><b>{0.008 * text.split(" ").length}</b> Minutes read</p>
@@ -55,5 +69,5 @@ export default function TextForm(props) {
 
 </div> 
     
-  )
+  ) 
 }
