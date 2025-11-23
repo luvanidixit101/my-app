@@ -46,16 +46,27 @@ export default function TextForm(props) {
    <div>
      <h1>{props.heading} </h1>
 <div className="mb-3">
-   
-  <textarea className="form-control" placeholder="Enter Your Content" value= {text} onChange={handaleOnChange} id="myBox" rows="8"></textarea><br></br>
-     <button  className="btn btn-primary mx-2" onClick={handaleClear}>Clear</button >
-    <button  className="btn btn-primary mx-2" onClick={handaleUpClick}>Convert to Uppercase</button >
-    <button  className="btn btn-primary mx-2" onClick={handaleLoClick}>Convert to Lowercase</button >
-        <button  className="btn btn-primary mx-2" onClick={handaleCopy}>Copy All Text</button >
-        <button  className="btn btn-primary mx-2" onClick={handaleExtraSpaces}>Romove Extra Space</button >
-       
-    
+
+<div className="mb-3">
+  <textarea
+    className="form-control"
+    placeholder="Enter Your Content"
+    value={text}
+    onChange={handaleOnChange}
+    id="myBox"
+    rows="8"
+  ></textarea>
+
+  <div className="button-group mt-3">
+    <button className="btn btn-primary" onClick={handaleClear}>Clear</button>
+    <button className="btn btn-primary" onClick={handaleUpClick}>Uppercase</button>
+    <button className="btn btn-primary" onClick={handaleLoClick}>Lowercase</button>
+    <button className="btn btn-primary" onClick={handaleCopy}>Copy</button>
+    <button className="btn btn-primary" onClick={handaleExtraSpaces}>Remove Spaces</button>
   </div>
+</div>
+
+</div>
 
   <div className="container my-3">
     <h2>Your Text Summary</h2>
@@ -64,7 +75,7 @@ export default function TextForm(props) {
 
  <p><b>{0.008 * text.split(" ").length}</b> Minutes read</p>
  <h2>Preview</h2>
- <p>{text}</p>
+ <p>{text.length>0?text:"Preview Your Content"}</p>
   </div>
 
 </div> 

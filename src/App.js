@@ -1,11 +1,40 @@
 // import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
+import Alert from './components/Alert';
 // import About from './components/About';
 
 
+
 function App() {
+  const [mode, setMode] = useState('light'); // whether dark mode is enable or not
+  const [alert, setAlert] = useState (null);
+  const showAlert = (message, type) =>{
+setAlert({
+  msg:message,
+  type:type
+})
+  }
+  
+const toggleMode =()=>{
+  if(mode === 'light'){
+
+    setMode('dark');
+    document.body.style.backgroundColor = '#1A2A4F';
+    document.body.style.color='white';
+    showAlert("Dark Mode is Enable", "Succsess !");
+    // document.body.style.fontFamily='Lucida Handwriting';
+  }
+  else{
+    setMode('light');
+    document.body.style.backgroundColor ='white';
+      document.body.style.color='black';
+      showAlert("Light Mode is Enable", "Succsess !");
+      
+  }
+}
   return (
     // <div className="App">
     //   <header className="App-header">
@@ -24,7 +53,8 @@ function App() {
     //   </header>
     // </div>
     <>
-        <Navbar tital="TextUtils" aboutText="About Us"/>
+        <Navbar tital="TextUtils" aboutText="About Us" mode={mode} toggleMode={toggleMode}/>
+        <Alert alert={alert}/>
         <div className="container my-3">
               <TextForm heading="Enter the text to analyze below"/>
         </div>

@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;        /* allow wrapping on small screens */
+  gap: 10px;              /* space between buttons */
+  justify-content: center; /* center align buttons */
+}
+
+.button-group .btn {
+  flex: 1 1 140px;        /* min width for small screens */
+  text-align: center;
+  border-radius: 8px;     /* smooth corners */
+  transition: all 0.3s ease;
+}
+
+.button-group .btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.03);
+}
