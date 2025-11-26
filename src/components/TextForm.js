@@ -8,18 +8,21 @@ export default function TextForm(props) {
         // console.log("Uppercase was cliked" + text);
         let newText=text.toUpperCase();
          setText(newText); // correct way
+         props.showAlert("Converted to Uppercase !", "success");
     }
 
      const handaleLoClick= () =>{
         // console.log("Uppercase was cliked" + text);
         let newText=text.toLocaleLowerCase();
          setText(newText); // correct way
+         props.showAlert("Converted to Lowercase !", "success");
     }
     
    
     const handaleClear= ()=>{
       let newText='';
       setText(newText);
+      props.showAlert("Textbox in Clear !", "warning");
 
     }
     
@@ -28,15 +31,17 @@ export default function TextForm(props) {
         setText(e.target.value);
     }
     const handaleCopy = ()=>{
-      console.log("T am copy")
+      console.log("I am copy")
       var text=document.getElementById("myBox");
       text.select();
       navigator.clipboard.writeText(text.value);
+       props.showAlert("All text is Copy", "success");
     }
 
     const handaleExtraSpaces =()=>{
       let newText=text.split(/[ ]+/);
       setText(newText.join(" "))
+       props.showAlert("Romove text in Textbox", "danger");
     }
 
     const [text, setText]= useState('');
